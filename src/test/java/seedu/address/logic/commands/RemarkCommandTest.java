@@ -24,7 +24,7 @@ class RemarkCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withRemark(REMARK_STUB).build();
 
-        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, editedPerson.getRemark().value);
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, editedPerson.getRemark());
 
         String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
 

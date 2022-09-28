@@ -94,8 +94,7 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags())
-                && otherPerson.getRemark().equals(getRemark());
+                && otherPerson.getTags().equals(getTags());
     }
 
     @Override
@@ -126,6 +125,6 @@ public class Person {
     }
 
     public Remark getRemark() {
-        return this.remark;
+        return remark;
     }
 }

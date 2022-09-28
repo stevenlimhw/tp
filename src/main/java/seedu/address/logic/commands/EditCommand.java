@@ -100,7 +100,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Remark updatedRemark = editPersonDescriptor.getRemark();
+        Remark updatedRemark = personToEdit.getRemark();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRemark);
     }
@@ -132,7 +132,6 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
-        private Remark remark;
 
         public EditPersonDescriptor() {
         }
@@ -222,10 +221,6 @@ public class EditCommand extends Command {
 
             return getName().equals(e.getName()) && getPhone().equals(e.getPhone()) && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress()) && getTags().equals(e.getTags());
-        }
-
-        public Remark getRemark() {
-            return remark;
         }
     }
 }
