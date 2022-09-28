@@ -1,5 +1,11 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -9,12 +15,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -26,6 +26,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -123,6 +124,12 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses the remark string
+     * @param remark string that contains remark
+     * @return remark object
+     * @throws ParseException to indicate failed parsing
+     */
     public static Remark parseRemark(String remark) throws ParseException {
         requireNonNull(remark);
         return new Remark(remark);
