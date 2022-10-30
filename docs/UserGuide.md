@@ -156,7 +156,7 @@ Format: `:add n/NAME w/WEIGHT s/SETS r/REPS [d/DATE]`
     * YEAR MONTH DAY
   * DAY: 1 or 2 valid digits allowed 
   * MONTH: 1 or 2 valid digits allowed 
-  * YEAR: 2 or 4 valid digits allowed
+  * YEAR: 4 valid digits allowed
   * Examples: 27/10/2022, 27-10-2022, 27/10/22... 
   * `d/DATE` field is left optional, will store exercise with current date if no date field is found
 
@@ -260,7 +260,8 @@ Format (1) : `:range start/START_DATE end/END_DATE`
 Format (2) : `:range last/NUMBER_OF_DAYS`
 
 ##### Parameter constraints:
-* Number of days can only take positive integer values, up to 6 digits
+* Number of days can only take non-negative integer values, up to 5 digits
+* Start date should be before end date
 
 ##### Example:
 `:range last/3` Shows the exercises done today and the last 3 days.

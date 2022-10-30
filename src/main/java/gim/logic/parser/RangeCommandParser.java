@@ -73,15 +73,21 @@ public class RangeCommandParser implements Parser<RangeCommand> {
         int days;
         // advanced version: when the user does not input any of the dates, but only inputs an integer with prefix last/
         try {
-            days = Integer.parseInt(argMultimap.getValue(PREFIX_RANGE_VARIATION_TWO).get());
+            String argumentValue = argMultimap.getValue(PREFIX_RANGE_VARIATION_TWO).get();
+            // Only accept up to 5 digits for the number of days
+            if (argumentValue.length() > 5) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        RangeCommand.MESSAGE_USAGE_TWO));
+            }
+            days = Integer.parseInt(argumentValue);
         } catch (NumberFormatException e) {
             // Ensure that the argument is a number and not other characters
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     RangeCommand.MESSAGE_USAGE_TWO));
         }
 
-        // Only accept non-negative integers and up to 6 digits for the number of days
-        if (days < 0 || days > 999999) {
+        // Only accept non-negative integers and up to 5 digits for the number of days
+        if (days < 0 || days > 99999) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     RangeCommand.MESSAGE_USAGE_TWO));
         }
